@@ -1,5 +1,6 @@
 import express from "express";
-import cors from "cors";              
+import cors from "cors";              // cors is to set rules of communication between the frontend and the backend
+// import mongoose from 'mongoose';
 import connectDB from "./db/dbconfig.js";
 import dotenv from 'dotenv';
 dotenv.config();
@@ -13,8 +14,16 @@ const port = process.env.PORT;
 
 connectDB();
 
+app.use(cors({
+  orgin:"*"
+}))
+
 app.use(express.json());
-app.use(cors());
+
+
+app.get("/",function(req,res){
+  res.send("Hello Guys Please Welcome 💐🎉🎊")
+})
 
 app.use("/auth", userRouter);
 app.use("/recipes", recipesRouter);
