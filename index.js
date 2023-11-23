@@ -14,12 +14,14 @@ const port = process.env.PORT;
 
 connectDB();
 
-app.use(cors());
+app.use(cors({
+  origin:"*"
+}));
 
 app.use(express.json());
 
 app.get("/", function (req, res) {
-  res.send("Hello Guys Please Welcome 💐🎉🎊");
+  res.send("Hello Guys Welcome to this app💐🎉🎊");
 });
 
 app.use("/auth", userRouter);
